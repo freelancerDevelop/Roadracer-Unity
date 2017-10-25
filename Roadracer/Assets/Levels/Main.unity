@@ -272,13 +272,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 689024828}
-  m_LocalRotation: {x: 0.08715578, y: 0, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: 0, y: 3, z: -10}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &719864151
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,7 +636,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c02285ae2cffd444ead0a5071e70e122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cloud: {fileID: 0}
+  poolSize: 100
+  cubeSizeX: 6
+  cubeSizeY: 1
+  cubeSizeZ: 8
+  cloudPositionRangeX: 300
+  cloudPositionY: 13
+  cloudPositionRangeZ: 100
+  nCloudparts: 5
+  speed: 0.5
+  cloudObject: {fileID: 0}
 --- !u!4 &1582813384
 Transform:
   m_ObjectHideFlags: 0

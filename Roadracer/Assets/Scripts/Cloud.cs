@@ -4,13 +4,26 @@ using UnityEngine;
 
 public class Cloud : MonoBehaviour
 {
-    [SerializeField] GameObject cloud = null;
+    
+    [SerializeField] private int poolSize = 300;
+    [SerializeField] private int cubeSizeX = 5;
+    [SerializeField] private float cubeSizeY = 0.5f;
+    [SerializeField] private int cubeSizeZ = 5;
+    [SerializeField] private int cloudPositionRangeX = 5;
+    [SerializeField] private int cloudPositionY = 13;
+    [SerializeField] private int cloudPositionRangeZ = 5;
+    [SerializeField] private int nCloudparts = 5;
+    public float speed = 1f;
+    public GameObject cloudObject;
+
+    private List<Cloud> pool;
     // Use this for initialization
     void Start()
     {
-        for (int i = 0; i < 5; i++)
+        pool = new List<Cloud>();
+        for (int i = 0; i < poolSize; i++)
         {
-            CreateNewInstance(5);
+            pool.Add(CreateNewInstance(nCloudparts));
             
         }
         
@@ -19,25 +32,34 @@ public class Cloud : MonoBehaviour
 
     }
 
+    void Update()
+    {
+        foreach (Cloud c in pool)
+        {
+            c.gameObject.transform.Translate(0, 0, speed * Time.deltaTime);
+        }   
+    }
 
     Cloud CreateNewInstance(int nCubes) {
         
-            GameObject cloudObject = new GameObject("CloudInstance");
+            cloudObject = new GameObject("Cloud");
+            //Transform cloudPool = null;
+        
             for (int i = 0; i < nCubes; i++)
             {
-                cloudObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                cloudObject.transform.localScale = new Vector3(3, 0.5f, 5);
-                cloudObject.transform.position = new Vector3(Random.value * 7, (Random.value) + 13, Random.value * 7);
+                GameObject cloudPart = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                cloudPart.transform.localScale = new Vector3(cubeSizeX, cubeSizeY, cubeSizeZ);
+                cloudPart.transform.position = new Vector3(Random.value * 7, 13, Random.value * 7);
+                cloudPart.transform.parent = cloudObject.transform;
+                cloudPart.SetActive(true);
             
             }
-            cloudObject.transform.position = new Vector3(Random.value * 27, (Random.value) + 13, Random.value * 27);
+            cloudObject.transform.position = new Vector3((Random.value * cloudPositionRangeX) -150, (Random.value) + cloudPositionY, Random.value * cloudPositionRangeZ);
             Cloud cloud = cloudObject.GetComponent<Cloud>();
             
             
-            return cloud;   
-
-        
-        
+            
+            return cloud;      
     }
 }
 
