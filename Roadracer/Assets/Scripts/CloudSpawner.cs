@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cloud : MonoBehaviour
+public class CloudSpawner : MonoBehaviour
 {
-    
     [SerializeField] private int poolSize = 300;
     [SerializeField] private int cubeSizeX = 5;
     [SerializeField] private float cubeSizeY = 0.5f;
@@ -13,14 +12,15 @@ public class Cloud : MonoBehaviour
     [SerializeField] private int cloudPositionY = 13;
     [SerializeField] private int cloudPositionRangeZ = 5;
     [SerializeField] private int nCloudparts = 5;
+
     public float speed = 1f;
     public GameObject cloudObject;
 
-    private List<Cloud> pool;
+    private List<GameObject> pool;
     // Use this for initialization
     void Start()
     {
-        pool = new List<Cloud>();
+        pool = new List<GameObject>();
         for (int i = 0; i < poolSize; i++)
         {
             pool.Add(CreateNewInstance(nCloudparts));
@@ -29,18 +29,17 @@ public class Cloud : MonoBehaviour
         
         //totalcloud.transform.localScale = new Vector3(3, 0.5f, 5);
         //totalcloud.transform.position = new Vector3(Random.value * 7, (Random.value * 2) + 13, Random.value * 7);
-
     }
 
     void Update()
     {
-        foreach (Cloud c in pool)
+        foreach (GameObject cloud in pool)
         {
-            c.gameObject.transform.Translate(0, 0, speed * Time.deltaTime);
+            cloud.transform.Translate(0, 0, speed * Time.deltaTime);
         }   
     }
 
-    Cloud CreateNewInstance(int nCubes) {
+    GameObject CreateNewInstance(int nCubes) {
         
             cloudObject = new GameObject("Cloud");
             //Transform cloudPool = null;
@@ -55,11 +54,8 @@ public class Cloud : MonoBehaviour
             
             }
             cloudObject.transform.position = new Vector3((Random.value * cloudPositionRangeX) -150, (Random.value) + cloudPositionY, Random.value * cloudPositionRangeZ);
-            Cloud cloud = cloudObject.GetComponent<Cloud>();
-            
-            
-            
-            return cloud;      
+            //Cloud cloud = cloudObject.GetComponent<Cloud>();
+            return cloudObject;      
     }
 }
 

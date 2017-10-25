@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 1.35
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
@@ -202,6 +202,7 @@ GameObject:
   - component: {fileID: 689024831}
   - component: {fileID: 689024830}
   - component: {fileID: 689024829}
+  - component: {fileID: 689024834}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -279,6 +280,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &689024834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 689024828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 0}
 --- !u!1 &719864151
 GameObject:
   m_ObjectHideFlags: 0
@@ -617,7 +630,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1582813384}
-  - component: {fileID: 1582813383}
+  - component: {fileID: 1582813385}
   m_Layer: 0
   m_Name: WorldGenerator
   m_TagString: Untagged
@@ -625,27 +638,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1582813383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1582813382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c02285ae2cffd444ead0a5071e70e122, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poolSize: 100
-  cubeSizeX: 6
-  cubeSizeY: 1
-  cubeSizeZ: 8
-  cloudPositionRangeX: 300
-  cloudPositionY: 13
-  cloudPositionRangeZ: 100
-  nCloudparts: 5
-  speed: 0.5
-  cloudObject: {fileID: 0}
 --- !u!4 &1582813384
 Transform:
   m_ObjectHideFlags: 0
@@ -659,6 +651,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1582813385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1582813382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad791a33068e4b4189cb9bd026aa981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolSize: 300
+  cubeSizeX: 5
+  cubeSizeY: 0.5
+  cubeSizeZ: 5
+  cloudPositionRangeX: 300
+  cloudPositionY: 13
+  cloudPositionRangeZ: 300
+  nCloudparts: 5
+  speed: -1
+  cloudObject: {fileID: 0}
 --- !u!1 &2038605906
 GameObject:
   m_ObjectHideFlags: 0
