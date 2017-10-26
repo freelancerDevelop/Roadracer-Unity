@@ -18,9 +18,16 @@ public class TreeManager : MonoBehaviour {
     [SerializeField] private int treeLeafsAmount = 5;
 
     [Header("Tree Spawn Position")]
-    [SerializeField] private Range treeSpawnPosRangeX;
+    [SerializeField] private Range treeSpawnPosRangeLeftX;
+    [SerializeField] private Range treeSpawnPosRangeRightX;
     [SerializeField] private Range treeSpawnPosRangeY;
     [SerializeField] private Range treeSpawnPosRangeZ;
+
+    [Header("Tree Respawn Position")]
+    [SerializeField] private Range treeRespawnPosRangeLeftX;
+    [SerializeField] private Range treeRespawnPosRangeRightX;
+    [SerializeField] private Range treeRespawnPosRangeY;
+    [SerializeField] private Range treeRespawnPosRangeZ;
 
     [System.Serializable]
     private class Range
@@ -58,6 +65,17 @@ public class TreeManager : MonoBehaviour {
         foreach (GameObject tree in trees)
         {
             tree.transform.Translate(0, 0, treeMovementSpeed * Time.deltaTime);
+            if (tree.transform.position.z < -50)
+            {
+                if (Random.value * 2 < 1)
+                {
+                    tree.transform.position = RandomPos(treeRespawnPosRangeLeftX, treeRespawnPosRangeY, treeRespawnPosRangeZ);
+                }
+                else
+                {       
+                    tree.transform.position = RandomPos(treeRespawnPosRangeRightX, treeRespawnPosRangeY, treeRespawnPosRangeZ);
+                }
+            }
         }
     }
     
@@ -79,7 +97,15 @@ public class TreeManager : MonoBehaviour {
             treeLeaf.GetComponent<Renderer>().material = treeLeafMat;
 
         }
-        treeObject.transform.position = RandomPos(treeSpawnPosRangeX, treeSpawnPosRangeY, treeSpawnPosRangeZ);
+        if (Random.value * 2 < 1)
+        {
+            treeObject.transform.position = RandomPos(treeSpawnPosRangeLeftX, treeSpawnPosRangeY, treeSpawnPosRangeZ);
+        }
+        else
+        {
+            treeObject.transform.position = RandomPos(treeSpawnPosRangeRightX, treeSpawnPosRangeY, treeSpawnPosRangeZ);
+        }
+
         return treeObject;
     }
 

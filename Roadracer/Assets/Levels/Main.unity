@@ -651,8 +651,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cloudMat: {fileID: 2100000, guid: a8972e95e07e7e9478efcf47e8d244ed, type: 2}
-  totalNumberOfClouds: 150
-  cloudMovementSpeed: 1
+  totalNumberOfClouds: 100
+  cloudMovementSpeed: -5
   cloudPartSizeX: 5
   cloudPartSizeY: 0.5
   cloudPartSizeZ: 8
@@ -665,7 +665,16 @@ MonoBehaviour:
     Maximum: 0
   cloudSpawnPosRangeZ:
     Minimum: -100
-    Maximum: 200
+    Maximum: 250
+  cloudRespawnPosRangeX:
+    Minimum: -150
+    Maximum: 150
+  cloudRespawnPosRangeY:
+    Minimum: 0
+    Maximum: 0
+  cloudRespawnPosRangeZ:
+    Minimum: 300
+    Maximum: 310
 --- !u!4 &1582813384
 Transform:
   m_ObjectHideFlags: 0
@@ -690,23 +699,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e5c76fe4ddc0d647824a9c12a7a5a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalNumberOfTrees: 150
-  treeMovementSpeed: 1
+  totalNumberOfTrees: 100
+  treeMovementSpeed: -5
   treeRootMat: {fileID: 2100000, guid: e05247e14ed5102428694e1fd95281fc, type: 2}
   treeLeafMat: {fileID: 2100000, guid: da6f48d79c6cda44bb51be9ff1a4075f, type: 2}
   treeLeafSizeX: 4
   treeLeafSizeY: 3.5
   treeLeafSizeZ: 3
   treeLeafsAmount: 5
-  treeSpawnPosRangeX:
-    Minimum: -150
-    Maximum: 150
+  treeSpawnPosRangeLeftX:
+    Minimum: -100
+    Maximum: -25
+  treeSpawnPosRangeRightX:
+    Minimum: 25
+    Maximum: 100
   treeSpawnPosRangeY:
     Minimum: 0
     Maximum: 0
   treeSpawnPosRangeZ:
-    Minimum: -100
-    Maximum: 200
+    Minimum: -50
+    Maximum: 250
+  treeRespawnPosRangeLeftX:
+    Minimum: -150
+    Maximum: -25
+  treeRespawnPosRangeRightX:
+    Minimum: 25
+    Maximum: 150
+  treeRespawnPosRangeY:
+    Minimum: 0
+    Maximum: 0
+  treeRespawnPosRangeZ:
+    Minimum: 210
+    Maximum: 250
 --- !u!1 &2038605906
 GameObject:
   m_ObjectHideFlags: 0

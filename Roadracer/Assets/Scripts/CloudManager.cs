@@ -21,6 +21,11 @@ public class CloudManager : MonoBehaviour
     [SerializeField] private Range cloudSpawnPosRangeY;
     [SerializeField] private Range cloudSpawnPosRangeZ;
 
+    [Header("Cloud Respawn Position")]
+    [SerializeField] private Range cloudRespawnPosRangeX;
+    [SerializeField] private Range cloudRespawnPosRangeY;
+    [SerializeField] private Range cloudRespawnPosRangeZ;
+
     [System.Serializable]
     private class Range
     {
@@ -56,6 +61,10 @@ public class CloudManager : MonoBehaviour
         foreach (GameObject cloud in clouds)
         {
             cloud.transform.Translate(0, 0, cloudMovementSpeed * Time.deltaTime);
+            if (cloud.transform.position.z < -50)
+            {
+                cloud.transform.position = RandomPos(cloudRespawnPosRangeX,cloudRespawnPosRangeY , cloudRespawnPosRangeZ);
+            }
         }   
     }
 
