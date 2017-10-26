@@ -14,8 +14,8 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 8
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0.5294118, g: 0.80784315, b: 0.98039216, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
   m_LinearFogStart: 0
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -240,7 +240,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.5453071, g: 0.68495893, b: 0.9044118, a: 0}
+  m_BackGroundColor: {r: 0.5294118, g: 0.80784315, b: 0.98039216, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 0}
+  profile: {fileID: 11400000, guid: 0d41ab03ef5c14a41b11140081b0128a, type: 2}
 --- !u!1 &719864151
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,13 +485,13 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.62
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
-    m_Resolution: -1
+    m_Resolution: 3
     m_CustomResolution: -1
     m_Strength: 1
     m_Bias: 0.015
@@ -506,7 +506,7 @@ Light:
     m_Bits: 4294967295
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 1.17
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -630,6 +630,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1582813384}
+  - component: {fileID: 1582813383}
   - component: {fileID: 1582813385}
   m_Layer: 0
   m_Name: WorldGenerator
@@ -638,6 +639,33 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1582813383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1582813382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9527cf5f0c1e39e41b7ed4169ed7756a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cloudMat: {fileID: 2100000, guid: a8972e95e07e7e9478efcf47e8d244ed, type: 2}
+  totalNumberOfClouds: 150
+  cloudMovementSpeed: 1
+  cloudPartSizeX: 5
+  cloudPartSizeY: 0.5
+  cloudPartSizeZ: 8
+  cloudPartsAmount: 3
+  cloudSpawnPosRangeX:
+    Minimum: -150
+    Maximum: 150
+  cloudSpawnPosRangeY:
+    Minimum: 0
+    Maximum: 0
+  cloudSpawnPosRangeZ:
+    Minimum: -100
+    Maximum: 200
 --- !u!4 &1582813384
 Transform:
   m_ObjectHideFlags: 0
@@ -659,19 +687,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1582813382}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ad791a33068e4b4189cb9bd026aa981, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e5c76fe4ddc0d647824a9c12a7a5a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolSize: 300
-  cubeSizeX: 5
-  cubeSizeY: 0.5
-  cubeSizeZ: 5
-  cloudPositionRangeX: 300
-  cloudPositionY: 13
-  cloudPositionRangeZ: 300
-  nCloudparts: 5
-  speed: -1
-  cloudObject: {fileID: 0}
+  totalNumberOfTrees: 150
+  treeMovementSpeed: 1
+  treeRootMat: {fileID: 2100000, guid: e05247e14ed5102428694e1fd95281fc, type: 2}
+  treeLeafMat: {fileID: 2100000, guid: da6f48d79c6cda44bb51be9ff1a4075f, type: 2}
+  treeLeafSizeX: 4
+  treeLeafSizeY: 3.5
+  treeLeafSizeZ: 3
+  treeLeafsAmount: 5
+  treeSpawnPosRangeX:
+    Minimum: -150
+    Maximum: 150
+  treeSpawnPosRangeY:
+    Minimum: 0
+    Maximum: 0
+  treeSpawnPosRangeZ:
+    Minimum: -100
+    Maximum: 200
 --- !u!1 &2038605906
 GameObject:
   m_ObjectHideFlags: 0
