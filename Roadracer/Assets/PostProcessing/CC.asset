@@ -79,9 +79,9 @@ MonoBehaviour:
   motionBlur:
     m_Enabled: 0
     m_Settings:
-      shutterAngle: 215
-      sampleCount: 10
-      frameBlending: 0.241
+      shutterAngle: 105
+      sampleCount: 15
+      frameBlending: 0.05
   eyeAdaptation:
     m_Enabled: 0
     m_Settings:
@@ -121,7 +121,7 @@ MonoBehaviour:
         neutralWhiteClip: 10
       basic:
         postExposure: 0
-        temperature: 9.5
+        temperature: -5.5
         tint: -0.8
         hueShift: 0
         saturation: 0.992
