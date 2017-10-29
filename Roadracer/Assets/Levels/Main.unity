@@ -1022,9 +1022,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2011ad28b5012cf4a97024c74fabb9ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldMovementSpeed: 5
-  rockPrefab: {fileID: 1288199017889988, guid: ae45a5e0b152e4d4e9efbdf26c742f7d, type: 2}
-  numberOfRocks: 10
+  worldMovementSpeed: -5
+  rockPrefab: {fileID: 1862872263583270, guid: 8551fae63dcba3e4bba1e6362128bdd9, type: 2}
+  numberOfRocks: 50
   groundObjectSpawnPosRangeLeftX:
     Minimum: -100
     Maximum: -25
@@ -1032,20 +1032,20 @@ MonoBehaviour:
     Minimum: 25
     Maximum: 100
   groundObjectSpawnPosRangeY:
-    Minimum: 0
-    Maximum: 0
+    Minimum: 0.5
+    Maximum: 0.5
   groundObjectSpawnPosRangeZ:
-    Minimum: -50
-    Maximum: 250
+    Minimum: 50
+    Maximum: 150
   groundObjectRespawnPosRangeLeftX:
-    Minimum: -75
+    Minimum: -100
     Maximum: -25
   groundObjectRespawnPosRangeRightX:
     Minimum: 25
-    Maximum: 75
+    Maximum: 100
   groundObjectRespawnPosRangeY:
-    Minimum: 0
-    Maximum: 0
+    Minimum: 0.5
+    Maximum: 0.5
   groundObjectRespawnPosRangeZ:
     Minimum: 210
     Maximum: 250

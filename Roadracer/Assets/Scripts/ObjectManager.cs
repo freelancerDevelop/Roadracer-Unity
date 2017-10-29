@@ -53,12 +53,13 @@ public class ObjectManager : MonoBehaviour {
             GameObject rockClone;
             if (Random.value * 2 < 1)
             {
-                rockClone = Instantiate(rockPrefab, RandomPos(groundObjectRespawnPosRangeLeftX, groundObjectRespawnPosRangeY, groundObjectRespawnPosRangeZ), Quaternion.Euler(new Vector3(-90, 0, 0))) as GameObject;
+                rockClone = Instantiate(rockPrefab, RandomPos(groundObjectSpawnPosRangeLeftX, groundObjectSpawnPosRangeY, groundObjectSpawnPosRangeZ), Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
             }
             else
             {
-                rockClone = Instantiate(rockPrefab, RandomPos(groundObjectRespawnPosRangeRightX, groundObjectRespawnPosRangeY, groundObjectRespawnPosRangeZ), Quaternion.Euler(new Vector3(-90, 0, 0))) as GameObject;
+                rockClone = Instantiate(rockPrefab, RandomPos(groundObjectSpawnPosRangeRightX, groundObjectSpawnPosRangeY, groundObjectSpawnPosRangeZ), Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
             }
+            
             rocks.Add(rockClone);
         }
 	}
@@ -67,7 +68,7 @@ public class ObjectManager : MonoBehaviour {
 	void Update () {
         foreach (var Rock in rocks)
         {
-            Rock.transform.Translate(0, worldMovementSpeed * Time.deltaTime, 0);
+            Rock.transform.Translate(0, 0, worldMovementSpeed * Time.deltaTime);
             if (Rock.transform.position.z < -50)
             {
                 if (Random.value * 2 < 1)
