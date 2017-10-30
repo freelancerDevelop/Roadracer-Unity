@@ -247,11 +247,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.75
   far clip plane: 2000
   field of view: 79
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 23
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -273,13 +273,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 689024828}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: -6}
+  m_LocalRotation: {x: 0.35355338, y: -0.35355338, z: 0.1464466, w: 0.8535535}
+  m_LocalPosition: {x: 31, y: 40.4, z: 5.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: -45, z: 0}
 --- !u!114 &689024834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -952,11 +952,11 @@ MonoBehaviour:
   treeLeafSizeZ: 3
   treeLeafsAmount: 5
   treeSpawnPosRangeLeftX:
-    Minimum: -100
-    Maximum: -25
+    Minimum: -50
+    Maximum: -15
   treeSpawnPosRangeRightX:
-    Minimum: 25
-    Maximum: 100
+    Minimum: 15
+    Maximum: 50
   treeSpawnPosRangeY:
     Minimum: 0
     Maximum: 0
@@ -964,11 +964,11 @@ MonoBehaviour:
     Minimum: -50
     Maximum: 250
   treeRespawnPosRangeLeftX:
-    Minimum: -100
-    Maximum: -25
+    Minimum: -50
+    Maximum: -15
   treeRespawnPosRangeRightX:
-    Minimum: 25
-    Maximum: 100
+    Minimum: 15
+    Maximum: 50
   treeRespawnPosRangeY:
     Minimum: 0
     Maximum: 0
@@ -1026,11 +1026,11 @@ MonoBehaviour:
   rockPrefab: {fileID: 1862872263583270, guid: 8551fae63dcba3e4bba1e6362128bdd9, type: 2}
   numberOfRocks: 50
   groundObjectSpawnPosRangeLeftX:
-    Minimum: -100
-    Maximum: -25
+    Minimum: -50
+    Maximum: -15
   groundObjectSpawnPosRangeRightX:
-    Minimum: 25
-    Maximum: 100
+    Minimum: 15
+    Maximum: 50
   groundObjectSpawnPosRangeY:
     Minimum: 0.5
     Maximum: 0.5
@@ -1038,11 +1038,11 @@ MonoBehaviour:
     Minimum: 50
     Maximum: 150
   groundObjectRespawnPosRangeLeftX:
-    Minimum: -100
-    Maximum: -25
+    Minimum: -50
+    Maximum: -15
   groundObjectRespawnPosRangeRightX:
-    Minimum: 25
-    Maximum: 100
+    Minimum: 15
+    Maximum: 50
   groundObjectRespawnPosRangeY:
     Minimum: 0.5
     Maximum: 0.5

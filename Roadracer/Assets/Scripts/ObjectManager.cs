@@ -51,15 +51,16 @@ public class ObjectManager : MonoBehaviour {
         for (int i = 0; i < numberOfRocks; i++)
         {
             GameObject rockClone;
+            float randomRotate = Random.value * 360;
             if (Random.value * 2 < 1)
             {
-                rockClone = Instantiate(rockPrefab, RandomPos(groundObjectSpawnPosRangeLeftX, groundObjectSpawnPosRangeY, groundObjectSpawnPosRangeZ), Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
+                rockClone = Instantiate(rockPrefab, RandomPos(groundObjectSpawnPosRangeLeftX, groundObjectSpawnPosRangeY, groundObjectSpawnPosRangeZ), Quaternion.Euler(new Vector3(0, randomRotate, 0))) as GameObject;
             }
             else
             {
-                rockClone = Instantiate(rockPrefab, RandomPos(groundObjectSpawnPosRangeRightX, groundObjectSpawnPosRangeY, groundObjectSpawnPosRangeZ), Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
+                rockClone = Instantiate(rockPrefab, RandomPos(groundObjectSpawnPosRangeRightX, groundObjectSpawnPosRangeY, groundObjectSpawnPosRangeZ), Quaternion.Euler(new Vector3(0, randomRotate, 0))) as GameObject;
             }
-            
+            rockClone.transform.localScale= new Vector3(Random.Range(1f,2.5f), Random.Range(1f,2.5f), Random.Range(1f,2.5f));
             rocks.Add(rockClone);
         }
 	}
@@ -68,7 +69,8 @@ public class ObjectManager : MonoBehaviour {
 	void Update () {
         foreach (var Rock in rocks)
         {
-            Rock.transform.Translate(0, 0, worldMovementSpeed * Time.deltaTime);
+            
+            Rock.transform.Translate(0, 0, worldMovementSpeed * Time.deltaTime, Space.World);
             if (Rock.transform.position.z < -50)
             {
                 if (Random.value * 2 < 1)
