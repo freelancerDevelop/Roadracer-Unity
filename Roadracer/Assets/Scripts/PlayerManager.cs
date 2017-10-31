@@ -20,18 +20,15 @@ public class PlayerManager : MonoBehaviour {
         if (playerPos == 2) { playerPos = 1; }
         if (playerPos == -2) { playerPos = -1; }
         if (playerPos == -1) {
-            Debug.Log("Moved to Left");
             transform.position = new Vector3(-7f, 1, 0);
         }
         else if (playerPos == 0)
         {
-            Debug.Log("Moved to Middle");
             transform.position = new Vector3(0, 1, 0);
 
         }
         else if (playerPos == 1)
         {
-            Debug.Log("Moved to Right");
             transform.position = new Vector3(7f, 1, 0);
 
         }
