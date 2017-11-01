@@ -589,7 +589,7 @@ PlayerSettings:
   cloudServicesEnabled:
     UNet: 1
   facebookSdkVersion: 7.9.4
-  apiCompatibilityLevel: 2
+  apiCompatibilityLevel: 3
   cloudProjectId: b7d2ef53-9cee-4401-807a-dc004d775cd5
   projectName: Roadracer
   organizationId: stefan-fortuin

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour {
@@ -7,6 +8,9 @@ public class EnemyManager : MonoBehaviour {
     private List<GameObject> enemies;
     private float lastEnemyPos = -40;
     private float newEnemyPos;
+    public GameObject player;
+    
+    private int totalscore = 0;
     public int enemyMovementSpeed;
     public int numberOfEnemies;
     public Material enemyMat;
@@ -55,6 +59,13 @@ public class EnemyManager : MonoBehaviour {
             foreach (GameObject enemy in enemies)
             {
                 enemy.transform.Translate(0, 0, enemyMovementSpeed * Time.deltaTime);
+                if (player.transform.position.x == enemy.transform.position.x && player.transform.position.z < enemy.transform.position.z + 0.5 && player.transform.position.z > enemy.transform.position.z - 0.5)
+                {
+                    Debug.Log("Collision");
+                }
+                if (player.transform.position.z < enemy.transform.position.z && player.transform.position.x != enemy.transform.position.x) {
+                    
+                }
                 if (enemy.transform.position.z < -50) {
                     float xpos = Mathf.Ceil(Random.value * 3);
                     if (xpos == 3)
@@ -79,6 +90,7 @@ public class EnemyManager : MonoBehaviour {
     GameObject CreateNewEnemy() {
 
         GameObject enemyObject = new GameObject("Enemy");
+        
         GameObject enemy = GameObject.CreatePrimitive(PrimitiveType.Cube);
         enemy.transform.localScale = new Vector3(1, 1, 1);
         enemy.GetComponent<Renderer>().material = enemyMat;
