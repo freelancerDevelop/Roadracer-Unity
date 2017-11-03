@@ -1,17 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectManager : MonoBehaviour {
 
     public float worldMovementSpeed;
-    private List<GameObject> rocks;
-
-    [Header("Object to Spawn")]
-    [SerializeField]private GameObject rockPrefab;
-
-    [Header("Amount of Objects to Spawn")]
-    [SerializeField] private int numberOfRocks;
+    public Objects[] objectsToSpawn;
+    private List<GameObject> allObjects;
 
     [Header("Ground Object Spawn Position")]
     [SerializeField] private Range groundObjectSpawnPosRangeLeftX;
@@ -24,6 +18,18 @@ public class ObjectManager : MonoBehaviour {
     [SerializeField] private Range groundObjectRespawnPosRangeRightX;
     [SerializeField] private Range groundObjectRespawnPosRangeY;
     [SerializeField] private Range groundObjectRespawnPosRangeZ;
+
+    [Header("Air Object Spawn Position")]
+    [SerializeField] private Range airObjectSpawnPosRangeLeftX;
+    [SerializeField] private Range airObjectSpawnPosRangeRightX;
+    [SerializeField] private Range airObjectSpawnPosRangeY;
+    [SerializeField] private Range airObjectSpawnPosRangeZ;
+
+    [Header("Air Object Respawn Position")]
+    [SerializeField] private Range airObjectRespawnPosRangeLeftX;
+    [SerializeField] private Range airObjectRespawnPosRangeRightX;
+    [SerializeField] private Range airObjectRespawnPosRangeY;
+    [SerializeField] private Range airObjectRespawnPosRangeZ;
 
     [System.Serializable]
     private class Range
@@ -47,39 +53,52 @@ public class ObjectManager : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
-        rocks = new List<GameObject>();
-        for (int i = 0; i < numberOfRocks; i++)
+        allObjects = new List<GameObject>();
+        foreach (var obj in objectsToSpawn)
         {
-            GameObject rockClone;
-            float randomRotate = Random.value * 360;
-            if (Random.value * 2 < 1)
+
+            if (obj.OnGround)
             {
-                rockClone = Instantiate(rockPrefab, RandomPos(groundObjectSpawnPosRangeLeftX, groundObjectSpawnPosRangeY, groundObjectSpawnPosRangeZ), Quaternion.Euler(new Vector3(0, randomRotate, 0))) as GameObject;
+                //spawning prefabs that need to be on the ground
+                for (int i = 0; i < obj.NumberOfInstances; i++)
+                {
+                    GameObject groundObject;
+                    GameObject prefab = obj.objectToSpawn;
+                    float randomRotate = Random.value * 360;
+                    if (Random.value * 2 < 1)
+                    {
+                        groundObject = Instantiate(prefab, RandomPos(groundObjectSpawnPosRangeLeftX, groundObjectSpawnPosRangeY, groundObjectSpawnPosRangeZ), Quaternion.Euler(new Vector3(0, randomRotate, 0))) as GameObject;
+                    }
+                    else
+                    {
+                        groundObject = Instantiate(prefab, RandomPos(groundObjectSpawnPosRangeRightX, groundObjectSpawnPosRangeY, groundObjectSpawnPosRangeZ), Quaternion.Euler(new Vector3(0, randomRotate, 0))) as GameObject;
+                    }
+                    //groundObject.transform.localScale = new Vector3(Random.Range(1f, 2.5f), Random.Range(1f, 2.5f), Random.Range(1f, 2.5f));
+                    allObjects.Add(groundObject);
+                }
             }
-            else
-            {
-                rockClone = Instantiate(rockPrefab, RandomPos(groundObjectSpawnPosRangeRightX, groundObjectSpawnPosRangeY, groundObjectSpawnPosRangeZ), Quaternion.Euler(new Vector3(0, randomRotate, 0))) as GameObject;
+            else if(!obj.OnGround){
+                //spawn prefabs that need to be in the air
+
             }
-            rockClone.transform.localScale= new Vector3(Random.Range(1f,2.5f), Random.Range(1f,2.5f), Random.Range(1f,2.5f));
-            rocks.Add(rockClone);
         }
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        foreach (var Rock in rocks)
+        foreach (var obj in allObjects)
         {
-            
-            Rock.transform.Translate(0, 0, worldMovementSpeed * Time.deltaTime, Space.World);
-            if (Rock.transform.position.z < -50)
+
+            obj.transform.Translate(0, 0, worldMovementSpeed * Time.deltaTime, Space.World);
+            if (obj.transform.position.z < -50)
             {
                 if (Random.value * 2 < 1)
                 {
-                    Rock.transform.position = RandomPos(groundObjectRespawnPosRangeLeftX, groundObjectRespawnPosRangeY, groundObjectRespawnPosRangeZ);
+                    obj.transform.position = RandomPos(groundObjectRespawnPosRangeLeftX, groundObjectRespawnPosRangeY, groundObjectRespawnPosRangeZ);
                 }
                 else
                 {
-                    Rock.transform.position = RandomPos(groundObjectRespawnPosRangeRightX, groundObjectRespawnPosRangeY, groundObjectRespawnPosRangeZ);
+                    obj.transform.position = RandomPos(groundObjectRespawnPosRangeRightX, groundObjectRespawnPosRangeY, groundObjectRespawnPosRangeZ);
                 }
             }
         }
