@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Collision : MonoBehaviour {
 
-    private void OnCollisionEnter(UnityEngine.Collision collision)
+    void OnTriggerEnter(Collider col)
     {
-        if (collision.gameObject.name == "Enemy")
-        {
-            Debug.Log("Collision");
+        if (col.gameObject.name == "player_car") {
+            Destroy(this.gameObject);
         }
+        
     }
 }
