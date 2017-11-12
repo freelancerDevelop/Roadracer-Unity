@@ -90,7 +90,7 @@ public class ObjectManager : MonoBehaviour {
         {
 
             obj.transform.Translate(0, 0, worldMovementSpeed * Time.deltaTime, Space.World);
-            if (obj.transform.position.z < -50)
+            if (obj.transform.position.z < -70)
             {
                 if (Random.value * 2 < 1)
                 {

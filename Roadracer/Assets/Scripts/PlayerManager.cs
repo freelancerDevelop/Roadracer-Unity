@@ -9,6 +9,7 @@ public class PlayerManager : MonoBehaviour {
     public Light rightheadlight;
     public Light leftrearlight;
     public Light rightrearlight;
+    public Light mainlight;
 
     private int playerPos = 0;
     private bool isLightOn;
@@ -41,6 +42,7 @@ public class PlayerManager : MonoBehaviour {
                 rightheadlight.enabled = true;
                 leftrearlight.enabled = true;
                 rightrearlight.enabled = true;
+                mainlight.intensity = 0.2f;
                 isLightOn = true;
             }
             else{
@@ -49,6 +51,7 @@ public class PlayerManager : MonoBehaviour {
                 rightheadlight.enabled = false;
                 leftrearlight.enabled = false;
                 rightrearlight.enabled = false;
+                mainlight.intensity = 1.5f;
                 isLightOn = false;
 
             }
@@ -59,11 +62,11 @@ public class PlayerManager : MonoBehaviour {
 
     private void Movement() {
         //Player movement
-        if (Input.GetKeyDown("d") || Input.GetKeyDown("right"))
+        if (Input.GetKeyDown("s") || Input.GetKeyDown("down"))
         {
             playerPos += 1;
         }
-        if (Input.GetKeyDown("a") || Input.GetKeyDown("left"))
+        if (Input.GetKeyDown("w") || Input.GetKeyDown("up"))
         {
             playerPos -= 1;
         }
