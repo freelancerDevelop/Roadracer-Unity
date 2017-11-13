@@ -6,9 +6,13 @@ public class PoliceChase : MonoBehaviour {
 
     public GameObject policecar;
     public GameObject player;
+    public float RotationSpeed;
 
-	// Use this for initialization
-	void Start () {
+    private Quaternion _lookRotation;
+    private Vector3 _direction;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -18,9 +22,24 @@ public class PoliceChase : MonoBehaviour {
 	}
 
     void startPoliceChase() {
+        float step = RotationSpeed * Time.deltaTime;
         Vector3 playerposition = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 12);
 
         policecar.transform.position = Vector3.Lerp(policecar.transform.position,playerposition,Time.deltaTime/2);
+
+        ////Rotate police car towards the player
+        //_direction = (player.transform.position - policecar.transform.position);
+
+        ////create the rotation we need to be in to look at the target
+        //_lookRotation = Quaternion.LookRotation(_direction);
+        
+        ////rotate us over time according to speed until we are in the required rotation
+        //policecar.transform.rotation = Quaternion.Slerp(policecar.transform.rotation, _lookRotation, Time.deltaTime * RotationSpeed);
+
+        Vector3 targetDir = player.transform.position - policecar.transform.position;
+        Vector3 newDir = Vector3.RotateTowards(policecar.transform.right, targetDir, step, 0.0F);
+        Debug.DrawRay(policecar.transform.position, targetDir, Color.red);
+        policecar.transform.rotation = Quaternion.LookRotation(targetDir);
     }
 
 }

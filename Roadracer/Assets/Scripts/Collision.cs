@@ -6,7 +6,7 @@ public class Collision : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.name == "player_car") {
+        if (col.gameObject.name == "lowpolycar") {
             Destroy(this.gameObject);
         }
         
