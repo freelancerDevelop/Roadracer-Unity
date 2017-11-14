@@ -9,6 +9,5 @@ public class Objects{
 
     public string objectName;
     public bool OnGround;
-    public bool InAir;
     public int NumberOfInstances;
 }

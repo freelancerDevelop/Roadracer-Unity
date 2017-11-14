@@ -4,8 +4,17 @@ using UnityEngine;
 public class ObjectManager : MonoBehaviour {
 
     public float worldMovementSpeed;
+
     public Objects[] objectsToSpawn;
+    public Enemy[] enemiesToSpawn;
+    public int numberOfEnemies;
     private List<GameObject> allObjects;
+    private List<GameObject> allEnemies;
+
+    private float[] enemiespos = new float[]{ -7, 0, 7 };
+    private float lastEnemyPos = 0;
+    private float newEnemyPos;
+    private int randomEnemyPos;
 
     [Header("Ground Object Spawn Position")]
     [SerializeField] private Range groundObjectSpawnPosRangeLeftX;
@@ -54,9 +63,9 @@ public class ObjectManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         allObjects = new List<GameObject>();
+        allEnemies = new List<GameObject>();
         foreach (var obj in objectsToSpawn)
         {
-
             if (obj.OnGround)
             {
                 //spawning prefabs that need to be on the ground
@@ -82,6 +91,19 @@ public class ObjectManager : MonoBehaviour {
 
             }
         }
+
+        foreach (var enemy in enemiesToSpawn)
+        {
+            for (int i = 0; i < numberOfEnemies; i++)
+            {
+                newEnemyPos = lastEnemyPos + Random.Range(10,20);
+                randomEnemyPos = Random.Range(0, 3);
+                GameObject enemyObject;
+                enemyObject = Instantiate(enemy.enemy, new Vector3(enemiespos[randomEnemyPos], 0.5239357f,newEnemyPos), Quaternion.Euler(new Vector3(0, 90, 0))) as GameObject;
+                lastEnemyPos = newEnemyPos;
+                allEnemies.Add(enemyObject);
+            }
+        }
 	}
 	
 	// Update is called once per frame
@@ -100,6 +122,15 @@ public class ObjectManager : MonoBehaviour {
                 {
                     obj.transform.position = RandomPos(groundObjectRespawnPosRangeRightX, groundObjectRespawnPosRangeY, groundObjectRespawnPosRangeZ);
                 }
+            }
+        }
+        foreach (var enemy in allEnemies)
+        {
+            enemy.transform.Translate(0, 0, worldMovementSpeed * Time.deltaTime, Space.World);
+            if (enemy.transform.position.z < -70)
+            {
+                randomEnemyPos = Random.Range(0, 3);
+                enemy.transform.position = new Vector3(enemiespos[randomEnemyPos], 0.5239357f, newEnemyPos);
             }
         }
 	}
