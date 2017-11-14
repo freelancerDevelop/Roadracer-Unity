@@ -11,8 +11,11 @@ public class PlayerManager : MonoBehaviour {
     public Light rightrearlight;
     public Light mainlight;
 
+    [Header("Movement")]
     public float movementSpeed;
+    public float rotationSpeed;
 
+    //Only for this script
     private Rigidbody rb;
     private int playerPos = 0;
     private bool isLightOn;
@@ -30,15 +33,15 @@ public class PlayerManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        //Player movement
-        Movement();
+       
         //Turn on/off car lights
         TurnOnLights();
     }
 
     private void FixedUpdate()
     {
-       
+        //Player movement
+        Movement();
     }
 
     private void TurnOnLights() {
@@ -100,7 +103,7 @@ public class PlayerManager : MonoBehaviour {
             
         }
 
-        transform.rotation = Quaternion.Euler(0, rb.velocity.x * 2, 0);
+        transform.rotation = Quaternion.Euler(0, rb.velocity.x * rotationSpeed, 0);
         transform.position = new Vector3(Mathf.Clamp(rb.position.x,-8,8), transform.position.y, Mathf.Clamp(rb.position.z,-20,50));
         //if (playerPos == 2) { playerPos = 1; }
         //if (playerPos == -2) { playerPos = -1; }

@@ -72,8 +72,8 @@ MonoBehaviour:
     m_Enabled: 0
     m_Settings:
       focusDistance: 16.83
-      aperture: 8.9
-      focalLength: 166
+      aperture: 7.3
+      focalLength: 131
       useCameraFov: 0
       kernelSize: 3
   motionBlur:
@@ -81,7 +81,7 @@ MonoBehaviour:
     m_Settings:
       shutterAngle: 107
       sampleCount: 16
-      frameBlending: 0.394
+      frameBlending: 0.607
   eyeAdaptation:
     m_Enabled: 0
     m_Settings:
@@ -100,7 +100,7 @@ MonoBehaviour:
     m_Enabled: 0
     m_Settings:
       bloom:
-        intensity: 7.35
+        intensity: 8.52
         threshold: 17
         softKnee: 0.121
         radius: 2.4
@@ -121,10 +121,10 @@ MonoBehaviour:
         neutralWhiteClip: 10
       basic:
         postExposure: 0
-        temperature: 6.3
-        tint: -0.8
+        temperature: 11
+        tint: 7
         hueShift: 0
-        saturation: 0.992
+        saturation: 0.99
         contrast: 1
       channelMixer:
         red: {x: 1, y: 0, z: 0}
