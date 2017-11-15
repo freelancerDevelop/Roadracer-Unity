@@ -2333,45 +2333,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldMovementSpeed: -15
   objectsToSpawn:
-  - objectToSpawn: {fileID: 100000, guid: d4f9d67b5d852074187828b377584606, type: 3}
-    objectName: Rock
+  - objectToSpawn: {fileID: 100000, guid: 4efa192fa56d6034bb13d080e5e81d6b, type: 3}
+    objectName: pinetree
     OnGround: 1
     NumberOfInstances: 40
-  - objectToSpawn: {fileID: 100000, guid: 4efa192fa56d6034bb13d080e5e81d6b, type: 3}
-    objectName: Pinetree
+  - objectToSpawn: {fileID: 100000, guid: 800bbc065a6136a4499068ad6e592cfd, type: 3}
+    objectName: brokentrunktree
     OnGround: 1
-    NumberOfInstances: 100
-  - objectToSpawn: {fileID: 100000, guid: 46ae1fff2186d6b448d3201168a3149e, type: 3}
-    objectName: Rock3
+    NumberOfInstances: 6
+  - objectToSpawn: {fileID: 100000, guid: 097b0368838cf394386f0020c534c794, type: 3}
+    objectName: betterrock
+    OnGround: 1
+    NumberOfInstances: 30
+  - objectToSpawn: {fileID: 100000, guid: a44974368179b2848ab0199e416c2f6d, type: 3}
+    objectName: betterrock2
     OnGround: 1
     NumberOfInstances: 20
-  - objectToSpawn: {fileID: 100000, guid: a44974368179b2848ab0199e416c2f6d, type: 3}
-    objectName: Rock2
+  - objectToSpawn: {fileID: 100000, guid: 46ae1fff2186d6b448d3201168a3149e, type: 3}
+    objectName: betterrock3
     OnGround: 1
-    NumberOfInstances: 30
+    NumberOfInstances: 15
   - objectToSpawn: {fileID: 100000, guid: 5dce39b36b2b5524e9618dd2268844eb, type: 3}
-    objectName: Rock4
+    objectName: betterrock4
     OnGround: 1
-    NumberOfInstances: 30
+    NumberOfInstances: 20
   - objectToSpawn: {fileID: 100008, guid: e6d9b81d6f1f1084ba51cebac23a3046, type: 3}
     objectName: smallrocks
     OnGround: 1
-    NumberOfInstances: 15
-  - objectToSpawn: {fileID: 100000, guid: 674d2fa27d794bd4493e365b86113659, type: 3}
-    objectName: log_fallen
-    OnGround: 1
-    NumberOfInstances: 5
+    NumberOfInstances: 20
   - objectToSpawn: {fileID: 100000, guid: 50d680c15a8c4d8449624b9b9de73eb1, type: 3}
-    objectName: broken_trunk_fallen_tree
+    objectName: brokentrunkfallentree
     OnGround: 1
-    NumberOfInstances: 2
-  - objectToSpawn: {fileID: 100000, guid: 800bbc065a6136a4499068ad6e592cfd, type: 3}
-    objectName: broken_trunk
+    NumberOfInstances: 10
+  - objectToSpawn: {fileID: 100000, guid: 674d2fa27d794bd4493e365b86113659, type: 3}
+    objectName: fallenlog
     OnGround: 1
     NumberOfInstances: 8
   enemiesToSpawn:
   - enemy: {fileID: 1734641984713848, guid: aa427f9f9e3a1b34da7ac31b6ef6f49f, type: 2}
-    name: normalenemy
+    name: normal
   numberOfEnemies: 8
   groundObjectSpawnPosRangeLeftX:
     Minimum: -80

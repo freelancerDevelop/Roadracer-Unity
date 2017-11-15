@@ -69,10 +69,10 @@ public class ObjectManager : MonoBehaviour {
             if (obj.OnGround)
             {
                 //spawning prefabs that need to be on the ground
-                for (int i = 0; i < obj.NumberOfInstances; i++)
+                for (int i = 0; i < obj.getNumberOfInstances(); i++)
                 {
                     GameObject groundObject;
-                    GameObject prefab = obj.objectToSpawn;
+                    GameObject prefab = obj.getObject();
                     float randomRotate = Random.value * 360;
                     if (Random.value * 2 < 1)
                     {
@@ -99,7 +99,7 @@ public class ObjectManager : MonoBehaviour {
                 newEnemyPos = lastEnemyPos + Random.Range(10,20);
                 randomEnemyPos = Random.Range(0, 3);
                 GameObject enemyObject;
-                enemyObject = Instantiate(enemy.enemy, new Vector3(enemiespos[randomEnemyPos], 0.5239357f,newEnemyPos), Quaternion.Euler(new Vector3(0, 90, 0))) as GameObject;
+                enemyObject = Instantiate(enemy.getEnemy(), new Vector3(enemiespos[randomEnemyPos], 0.5239357f,newEnemyPos), Quaternion.Euler(new Vector3(0, 90, 0))) as GameObject;
                 lastEnemyPos = newEnemyPos;
                 allEnemies.Add(enemyObject);
             }

@@ -5,9 +5,21 @@ using UnityEngine;
 [System.Serializable]
 public class Objects{
 
-	public GameObject objectToSpawn;
 
-    public string objectName;
+    [SerializeField] private GameObject objectToSpawn;
+    [SerializeField] private string objectName;
     public bool OnGround;
-    public int NumberOfInstances;
+    [SerializeField] private int NumberOfInstances;
+
+    public GameObject getObject() {
+        return objectToSpawn;
+    }
+
+    public string getObjectName() {
+        return objectName;
+    }
+
+    public int getNumberOfInstances() {
+        return NumberOfInstances;
+    }
 }

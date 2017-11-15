@@ -5,7 +5,14 @@ using UnityEngine;
 [System.Serializable]
 public class Enemy{
 
-    public GameObject enemy;
-    public string name;
+    [SerializeField] private GameObject enemy;
+    [SerializeField] private string name;
 
+    public GameObject getEnemy() {
+        return enemy;
+    }
+
+    public string getName() {
+        return name;
+    }
 }
