@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour {
 
+    [SerializeField] private float health = 100f;
+
+    
+
+
     [Header("Car Lights")]
     public Light leftheadlight;
     public Light rightheadlight;
@@ -122,6 +127,18 @@ public class PlayerManager : MonoBehaviour {
 
         //}
 
+    }
+
+    public float onHealth
+    {
+        get
+        {
+            return this.health;
+        }
+        set
+        {
+            this.health = value;
+        }
     }
 }
     

@@ -1,14 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MenuManager : MonoBehaviour {
 
     public Camera mainCamera;
+    public GameObject player;
+    
+    public TextMeshProUGUI healthText;
     private Vector3 mainCameraPlayPosition = new Vector3(40, 40, 30);
     private Vector3 mainCameraMenuPosition = new Vector3(63, 40, 30);
     public bool moveCameraToPlay = false;
     public bool moveCameraToMenu = false;
+
+    
 
     // Use this for initialization
     void Start () {
@@ -35,6 +41,8 @@ public class MenuManager : MonoBehaviour {
             moveCameraToMenu = true;
 
         }
+        healthText.text = player.GetComponent<playerStats>().currentHealth.ToString();
+       
 
     }
 
@@ -71,4 +79,11 @@ public class MenuManager : MonoBehaviour {
         moveCameraToPlay = true;
         moveCameraToMenu = false;
     }
+
+    public string setHealthText {
+        set {
+            healthText.text = value;
+        }
+    }
+    
 }

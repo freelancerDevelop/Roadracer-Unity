@@ -272,6 +272,8 @@ GameObject:
   - component: {fileID: 389869590}
   - component: {fileID: 389869589}
   - component: {fileID: 389869588}
+  - component: {fileID: 389869592}
+  - component: {fileID: 389869593}
   m_Layer: 0
   m_Name: lowpolycar
   m_TagString: Untagged
@@ -286,7 +288,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 389869587}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 0.8260565, z: 2.0280123}
@@ -302,6 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb1749076d433b54aaa2af213f524dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
   leftheadlight: {fileID: 437222421}
   rightheadlight: {fileID: 1782822184}
   leftrearlight: {fileID: 2057480061}
@@ -340,8 +343,32 @@ Transform:
   - {fileID: 581677008}
   - {fileID: 2057480062}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &389869592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 389869587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41c732262f9fab242a1d0665003dff52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  score: 0
+--- !u!114 &389869593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 389869587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9f4a5c859fdde40947c44b280f9a09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &437222420
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,6 +1019,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 689024832}
+  player: {fileID: 389869587}
+  healthText: {fileID: 1419304919}
   moveCameraToPlay: 0
   moveCameraToMenu: 0
 --- !u!1 &830183229
@@ -1388,6 +1417,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1121546118}
   - component: {fileID: 1121546119}
+  - component: {fileID: 1121546120}
+  - component: {fileID: 1121546121}
   m_Layer: 0
   m_Name: policecar
   m_TagString: Untagged
@@ -1407,7 +1438,7 @@ Transform:
   m_Children:
   - {fileID: 830183230}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1121546119
 BoxCollider:
@@ -1421,6 +1452,33 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1121546120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1121546117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b2282982eb23ff4c93dcfd015bce0b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+--- !u!54 &1121546121
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1121546117}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 1
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1181505118
 GameObject:
   m_ObjectHideFlags: 0
@@ -2125,6 +2183,7 @@ GameObject:
   - component: {fileID: 1506194442}
   - component: {fileID: 1506194443}
   - component: {fileID: 1506194444}
+  - component: {fileID: 1506194445}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2143,7 +2202,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1506194443
 MonoBehaviour:
@@ -2172,6 +2231,21 @@ MonoBehaviour:
   policecar: {fileID: 1121546117}
   player: {fileID: 389869587}
   RotationSpeed: 2
+--- !u!114 &1506194445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1506194441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa1f6387c6c1d4142ac640abbc6cda81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuCanvas: {fileID: 738659491}
+  mainPlayer: {fileID: 389869587}
+  policeCar: {fileID: 1121546117}
+  enemyCars: []
 --- !u!1 &1582813382
 GameObject:
   m_ObjectHideFlags: 0
