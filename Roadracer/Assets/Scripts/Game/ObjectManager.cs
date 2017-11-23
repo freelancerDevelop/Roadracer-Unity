@@ -3,18 +3,29 @@ using UnityEngine;
 
 public class ObjectManager : MonoBehaviour {
 
-    public float worldMovementSpeed;
+    [SerializeField] private float worldMovementSpeed;
 
     public Objects[] objectsToSpawn;
     public Enemy[] enemiesToSpawn;
+    public Roadblock[] roadblocks;
+
+    public GameObject policecar;
+    public GameObject roadlinePrefab;
+
     public int numberOfEnemies;
+    public int numberOfRoadlines = 17;
+    private float lastRoadlinePos = -40;
+    private float newRoadlinePos;
     private List<GameObject> allObjects;
     private List<GameObject> allEnemies;
-
+    private List<GameObject> allRoadlines;
+    private List<Roadblock> allRoadblocks;
+ 
     private float[] enemiespos = new float[]{ -7, 0, 7 };
     private float lastEnemyPos = 0;
     private float newEnemyPos;
     private int randomEnemyPos;
+    private bool makeNewRoadblock= false;
 
     [Header("Ground Object Spawn Position")]
     [SerializeField] private Range groundObjectSpawnPosRangeLeftX;
@@ -64,6 +75,8 @@ public class ObjectManager : MonoBehaviour {
     void Start () {
         allObjects = new List<GameObject>();
         allEnemies = new List<GameObject>();
+        allRoadlines = new List<GameObject>();
+        allRoadblocks = new List<Roadblock>();
         foreach (var obj in objectsToSpawn)
         {
             if (obj.OnGround)
@@ -92,26 +105,26 @@ public class ObjectManager : MonoBehaviour {
             }
         }
 
-        foreach (var enemy in enemiesToSpawn)
+       
+        Roadblock roadblock = new Roadblock(policecar);
+        allRoadblocks.Add(roadblock);
+
+        for (int i = 0; i < numberOfRoadlines; i++)
         {
-            for (int i = 0; i < numberOfEnemies; i++)
-            {
-                newEnemyPos = lastEnemyPos + Random.Range(10,20);
-                randomEnemyPos = Random.Range(0, 3);
-                GameObject enemyObject;
-                enemyObject = Instantiate(enemy.getEnemy(), new Vector3(enemiespos[randomEnemyPos], 0.5239357f,newEnemyPos), Quaternion.Euler(new Vector3(0, 90, 0))) as GameObject;
-                lastEnemyPos = newEnemyPos;
-                allEnemies.Add(enemyObject);
-            }
+
+            newRoadlinePos = lastRoadlinePos + 17;    
+            GameObject roadline = Instantiate(roadlinePrefab, new Vector3(0,0,newRoadlinePos), Quaternion.identity);
+            lastRoadlinePos = newRoadlinePos;
+            allRoadlines.Add(roadline);
+            
         }
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
         foreach (var obj in allObjects)
         {
-
-            obj.transform.Translate(0, 0, worldMovementSpeed * Time.deltaTime, Space.World);
+            moveObject(obj);
             if (obj.transform.position.z < -70)
             {
                 if (Random.value * 2 < 1)
@@ -124,13 +137,30 @@ public class ObjectManager : MonoBehaviour {
                 }
             }
         }
-        foreach (var enemy in allEnemies)
+
+        foreach (var roadblock in allRoadblocks)
         {
-            enemy.transform.Translate(0, 0, worldMovementSpeed * Time.deltaTime, Space.World);
-            if (enemy.transform.position.z < -70)
+            moveObject(roadblock.getRoadblock());
+            
+            if (roadblock.getRoadblock().transform.position.z < -50)
             {
-                randomEnemyPos = Random.Range(0, 3);
-                enemy.transform.position = new Vector3(enemiespos[randomEnemyPos], 0.5239357f, newEnemyPos);
+                roadblock.respawnRoadblock();
+                makeNewRoadblock = true;
+            }
+            if (roadblock.getRoadblock().transform.position.z == 0)
+            {
+                CreateRoadblock();
+            }
+
+        }
+
+        foreach (var roadline in allRoadlines)
+        {
+            moveObject(roadline);
+            if (roadline.transform.position.z < -70)
+            {                          
+                roadline.transform.position = new Vector3(0f, 0f, 235);
+                
             }
         }
 	}
@@ -142,4 +172,29 @@ public class ObjectManager : MonoBehaviour {
         float randomZ = rangeZ.RandomInRange();
         return new Vector3(randomX, randomY, randomZ);
     }
+
+    public void CreateRoadblock()
+    {
+        if (makeNewRoadblock == true && allRoadblocks.Count <= 2)
+        {
+            Roadblock roadblockNew = new Roadblock(policecar);
+            allRoadblocks.Add(roadblockNew);
+            makeNewRoadblock = false;
+        }
+    }
+
+    public float currentWorldMovementSpeed {
+        get {
+            return worldMovementSpeed;
+        }
+        set {
+            worldMovementSpeed = value;
+        }
+    }
+
+    private void moveObject(GameObject objectToMove) {
+        objectToMove.transform.Translate(0, 0, worldMovementSpeed * Time.deltaTime, Space.World);
+
+    }
+
 }

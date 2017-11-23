@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour {
 
-    [SerializeField] private float health = 100f;
 
-    
+    public GameObject worldGenerator;
+    private float worldSpeed;
 
 
     [Header("Car Lights")]
@@ -33,12 +33,14 @@ public class PlayerManager : MonoBehaviour {
 
         rb = GetComponent<Rigidbody>();
 
+        
+
     }
 
 	// Update is called once per frame
 	void Update () {
-
-       
+        worldSpeed = worldGenerator.GetComponent<ObjectManager>().currentWorldMovementSpeed;
+        
         //Turn on/off car lights
         TurnOnLights();
     }
@@ -83,62 +85,27 @@ public class PlayerManager : MonoBehaviour {
         if (Input.GetKey("s") || Input.GetKeyDown("down"))
         {
             //Move the player down
-            rb.AddForce(movementSpeed * Time.deltaTime, 0, 0);
-            
-            
+            rb.AddForce(movementSpeed * Time.deltaTime, 0, 0);                      
         }
         if (Input.GetKey("w") || Input.GetKeyDown("up"))
         {
             //Move the player up
-            rb.AddForce(-movementSpeed * Time.deltaTime, 0, 0);
-            
-           
+            rb.AddForce(-movementSpeed * Time.deltaTime, 0, 0);                    
         }
         if (Input.GetKey("d") || Input.GetKeyDown("right"))
         {
             //Move the player to the right
-            rb.AddForce(0, 0, movementSpeed * Time.deltaTime);
-            
+            rb.AddForce(0, 0, movementSpeed * Time.deltaTime);            
         }  
         if (Input.GetKey("a") || Input.GetKeyDown("left"))
         {
             //Move the player to the left
-            rb.AddForce(0, 0, -movementSpeed * Time.deltaTime);
-            
-            
+            rb.AddForce(0, 0, -movementSpeed * Time.deltaTime);          
         }
 
         transform.rotation = Quaternion.Euler(0, rb.velocity.x * rotationSpeed, 0);
         transform.position = new Vector3(Mathf.Clamp(rb.position.x,-8,8), transform.position.y, Mathf.Clamp(rb.position.z,-20,50));
-        //if (playerPos == 2) { playerPos = 1; }
-        //if (playerPos == -2) { playerPos = -1; }
-        //if (playerPos == -1)
-        //{
-        //    transform.position = new Vector3(-7f, 0.5f, 0);
-        //}
-        //else if (playerPos == 0)
-        //{
-        //    transform.position = new Vector3(0, 0.5f, 0);
-
-        //}
-        //else if (playerPos == 1)
-        //{
-        //    transform.position = new Vector3(7f, 0.5f, 0);
-
-        //}
-
-    }
-
-    public float onHealth
-    {
-        get
-        {
-            return this.health;
-        }
-        set
-        {
-            this.health = value;
-        }
+      
     }
 }
     

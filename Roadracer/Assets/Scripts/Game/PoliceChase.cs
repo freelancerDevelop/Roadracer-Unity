@@ -25,7 +25,7 @@ public class PoliceChase : MonoBehaviour {
         float step = RotationSpeed * Time.deltaTime;
         Vector3 playerposition = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 14);
 
-        policecar.transform.position = Vector3.Lerp(policecar.transform.position,playerposition,Time.deltaTime/1.5f);
+        policecar.transform.position = Vector3.Lerp(policecar.transform.position,playerposition,Time.deltaTime);
 
         ////Rotate police car towards the player
         //_direction = (player.transform.position - policecar.transform.position);

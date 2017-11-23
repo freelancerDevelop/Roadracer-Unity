@@ -288,11 +288,11 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 389869587}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.8260565, z: 2.0280123}
-  m_Center: {x: 0, y: 0.44564456, z: -0.020367265}
+  m_Size: {x: 1, y: 0.85884273, z: 2.0280123}
+  m_Center: {x: 0, y: 0.42925143, z: -0.020367306}
 --- !u!114 &389869589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb1749076d433b54aaa2af213f524dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  worldGenerator: {fileID: 1582813382}
   leftheadlight: {fileID: 437222421}
   rightheadlight: {fileID: 1782822184}
   leftrearlight: {fileID: 2057480061}
@@ -325,7 +325,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 80
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!4 &389869591
 Transform:
@@ -826,7 +826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eed1d9cbe64423499f1fefc0ce50417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Resolution: 0
+  Resolution: 1
   DefaultSpotCookie: {fileID: 2800000, guid: 5157bf6d690b6df458f6c0ce0c06d329, type: 3}
 --- !u!1 &719864151
 GameObject:
@@ -1418,7 +1418,6 @@ GameObject:
   - component: {fileID: 1121546118}
   - component: {fileID: 1121546119}
   - component: {fileID: 1121546120}
-  - component: {fileID: 1121546121}
   m_Layer: 0
   m_Name: policecar
   m_TagString: Untagged
@@ -1450,8 +1449,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.8223998, z: 2.0137367}
+  m_Center: {x: 0, y: 0.4494494, z: -0.014715195}
 --- !u!114 &1121546120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1464,21 +1463,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
---- !u!54 &1121546121
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1121546117}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 1
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &1181505118
 GameObject:
   m_ObjectHideFlags: 0
@@ -2239,13 +2223,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1506194441}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa1f6387c6c1d4142ac640abbc6cda81, type: 3}
+  m_Script: {fileID: 11500000, guid: e2740bc0d1fba67468712c8d107a8869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   menuCanvas: {fileID: 738659491}
   mainPlayer: {fileID: 389869587}
   policeCar: {fileID: 1121546117}
   enemyCars: []
+  worldGenerator: {fileID: 1582813382}
 --- !u!1 &1582813382
 GameObject:
   m_ObjectHideFlags: 0
@@ -2254,11 +2239,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1582813384}
-  - component: {fileID: 1582813383}
-  - component: {fileID: 1582813385}
-  - component: {fileID: 1582813386}
   - component: {fileID: 1582813387}
-  - component: {fileID: 1582813388}
   m_Layer: 0
   m_Name: WorldGenerator
   m_TagString: Untagged
@@ -2266,42 +2247,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1582813383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1582813382}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9527cf5f0c1e39e41b7ed4169ed7756a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cloudMat: {fileID: 2100000, guid: a8972e95e07e7e9478efcf47e8d244ed, type: 2}
-  totalNumberOfClouds: 50
-  cloudMovementSpeed: -5
-  cloudPartSizeX: 5
-  cloudPartSizeY: 0.5
-  cloudPartSizeZ: 8
-  cloudPartsAmount: 3
-  cloudSpawnPosRangeX:
-    Minimum: -100
-    Maximum: 100
-  cloudSpawnPosRangeY:
-    Minimum: 0
-    Maximum: 0
-  cloudSpawnPosRangeZ:
-    Minimum: -100
-    Maximum: 250
-  cloudRespawnPosRangeX:
-    Minimum: -100
-    Maximum: 100
-  cloudRespawnPosRangeY:
-    Minimum: 0
-    Maximum: 0
-  cloudRespawnPosRangeZ:
-    Minimum: 300
-    Maximum: 310
 --- !u!4 &1582813384
 Transform:
   m_ObjectHideFlags: 0
@@ -2315,85 +2260,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1582813385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1582813382}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e5c76fe4ddc0d647824a9c12a7a5a0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  totalNumberOfTrees: 100
-  treeMovementSpeed: -5
-  treeRootMat: {fileID: 2100000, guid: e05247e14ed5102428694e1fd95281fc, type: 2}
-  treeLeafMat: {fileID: 2100000, guid: da6f48d79c6cda44bb51be9ff1a4075f, type: 2}
-  treeLeafSizeX: 4
-  treeLeafSizeY: 3.5
-  treeLeafSizeZ: 3
-  treeLeafsAmount: 5
-  treeSpawnPosRangeLeftX:
-    Minimum: -50
-    Maximum: -20
-  treeSpawnPosRangeRightX:
-    Minimum: 20
-    Maximum: 50
-  treeSpawnPosRangeY:
-    Minimum: 0
-    Maximum: 0
-  treeSpawnPosRangeZ:
-    Minimum: -50
-    Maximum: 250
-  treeRespawnPosRangeLeftX:
-    Minimum: -50
-    Maximum: -20
-  treeRespawnPosRangeRightX:
-    Minimum: 20
-    Maximum: 50
-  treeRespawnPosRangeY:
-    Minimum: 0
-    Maximum: 0
-  treeRespawnPosRangeZ:
-    Minimum: 210
-    Maximum: 250
---- !u!114 &1582813386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1582813382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23fe4ffeefcaa344f9a6e5cc1245cfd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  roadlineMat: {fileID: 2100000, guid: 79d6b491947327e44b98188085f8de41, type: 2}
-  totalNumberOfRoadlines: 17
-  roadlineMovementSpeed: -15
-  roadlinePartSizeX: 0.5
-  roadlinePartSizeY: 1.05
-  roadlinePartSizeZ: 10
-  roadlinePartsAmount: 2
-  roadlineSpawnPosRangeX:
-    Minimum: 0
-    Maximum: 0
-  roadlineSpawnPosRangeY:
-    Minimum: 0
-    Maximum: 0
-  roadlineSpawnPosRangeZ:
-    Minimum: 0
-    Maximum: 0
-  roadlineRespawnPosRangeX:
-    Minimum: 0
-    Maximum: 0
-  roadlineRespawnPosRangeY:
-    Minimum: 0
-    Maximum: 0
-  roadlineRespawnPosRangeZ:
-    Minimum: 0
-    Maximum: 0
 --- !u!114 &1582813387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2405,7 +2271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2011ad28b5012cf4a97024c74fabb9ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldMovementSpeed: -15
+  worldMovementSpeed: 0
   objectsToSpawn:
   - objectToSpawn: {fileID: 100000, guid: 4efa192fa56d6034bb13d080e5e81d6b, type: 3}
     objectName: pinetree
@@ -2444,9 +2310,13 @@ MonoBehaviour:
     OnGround: 1
     NumberOfInstances: 8
   enemiesToSpawn:
-  - enemy: {fileID: 1734641984713848, guid: aa427f9f9e3a1b34da7ac31b6ef6f49f, type: 2}
+  - enemy: {fileID: 1025822441304428, guid: 6c6e6c8af69b822448215a575291425e, type: 2}
     name: normal
-  numberOfEnemies: 8
+  policecar: {fileID: 1545264906377752, guid: 6c6e6c8af69b822448215a575291425e, type: 2}
+  roadlinePrefab: {fileID: 1060574463252872, guid: 6f76db73b2ed1c34aa5df0ffc9d4132f,
+    type: 2}
+  numberOfEnemies: 0
+  numberOfRoadlines: 18
   groundObjectSpawnPosRangeLeftX:
     Minimum: -80
     Maximum: -20
@@ -2493,40 +2363,6 @@ MonoBehaviour:
     Minimum: 0
     Maximum: 0
   airObjectRespawnPosRangeZ:
-    Minimum: 0
-    Maximum: 0
---- !u!114 &1582813388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1582813382}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26af5b1aa42c4a247abf5603b1422cd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 1734641984713848, guid: aa427f9f9e3a1b34da7ac31b6ef6f49f,
-    type: 2}
-  enemyMovementSpeed: -15
-  numberOfEnemies: 15
-  enemyMat: {fileID: 2100000, guid: 6e133e30f5170554989ce8da8e7cd059, type: 2}
-  roadlineSpawnPosRangeX:
-    Minimum: 0
-    Maximum: 0
-  roadlineSpawnPosRangeY:
-    Minimum: 0
-    Maximum: 0
-  roadlineSpawnPosRangeZ:
-    Minimum: 0
-    Maximum: 0
-  roadlineRespawnPosRangeX:
-    Minimum: 0
-    Maximum: 0
-  roadlineRespawnPosRangeY:
-    Minimum: 0
-    Maximum: 0
-  roadlineRespawnPosRangeZ:
     Minimum: 0
     Maximum: 0
 --- !u!1 &1610103657

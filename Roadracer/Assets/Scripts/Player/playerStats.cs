@@ -10,7 +10,7 @@ public class playerStats : MonoBehaviour {
     private void Update()
     {
         if (currentHealth == 0) {
-            //Gameover
+            //Gameover, timescale for testing
             Time.timeScale = 0;
         }
     }

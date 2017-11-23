@@ -8,7 +8,7 @@ public class Collide : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.name == "enemy_car(Clone)") {      
+        if (col.gameObject.name == "policecarRoadblock(Clone)") {      
             hasCollided = true;
         }
         
