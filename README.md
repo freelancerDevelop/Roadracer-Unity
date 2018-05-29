@@ -33,4 +33,4 @@ Tried changing the menu to something different than the static one, the first on
 
 
 Of course there were some bugs along the way..
-![](https://i.imgur.com/92NcVKZ.gif)
+![](https://media.giphy.com/media/uANGAKG5dwWppaZCKc/giphy.gif)
