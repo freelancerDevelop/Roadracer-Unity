@@ -15,6 +15,7 @@ Later i tried to make some small cars in blender. So that it would look like a r
 ![](https://i.imgur.com/r7kgZBw.jpg)
 ![](https://i.imgur.com/cyX0ZIi.jpg)
 ![](https://i.imgur.com/SPOxjzD.jpg)
+![](https://i.imgur.com/J15gmUV.jpg)
 
 Also some small object were made to fill up the empty space between the trees and rocks
 ![](https://i.imgur.com/VlYfRA9.jpg)
