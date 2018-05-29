@@ -2,7 +2,11 @@
 The Roadracer test game I started in Threejs but in Unity
 
 # Some progress gifs
+At first had a feeling that having the camera looking from behind was the way to go. 
+![](https://i.imgur.com/ru5XSvS.jpg)
 
+But i soon realised that using a isometric had way cooler effect!
+![](https://i.imgur.com/pInDCnW.jpg)
 
 Trying to add some darkness to the game, with the functionality to see things by turning on your headlights or by using the light poles next to the road, but they won't help as much.
 ![](https://media.giphy.com/media/NsF13pDKVNGhzyia3J/giphy.gif)
